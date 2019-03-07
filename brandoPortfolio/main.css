@@ -12,3 +12,9 @@
 .stickyHeader + .content {
     padding-top: 102px;
 }
+.sticky {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }

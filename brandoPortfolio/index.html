@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <title>Brandon Peckham Home</title>
 </head>
-<header class="mainHeader">
+<header class="mainHeader" id="mainHeader">
     <h1>Brandon Peckham</h1>
 </header>
 
@@ -24,8 +24,25 @@
                 I also make music.
             </p>
         </section>
+        <section>
+<!-- add a bunch of lorem ipsum here to test sticky header -->
+        </section>
     </main>
 
 </body>
+<script>
+    window.onscroll = function () { headerStick() };
+
+    var header = document.getElementById("mainHeader");
+    var sticky = header.offsetTop;
+
+    function headerStick() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
 
 </html>
