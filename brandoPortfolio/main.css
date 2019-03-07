@@ -1,6 +1,14 @@
 .mainHeader {
+    
     text-align: center;
     margin-left: 25%;
     margin-right: 25%;
-    background: cyan;
+}
+.stickyHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.stickyHeader + .content {
+    padding-top: 102px;
 }
