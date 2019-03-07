@@ -1,10 +1,12 @@
 .mainHeader {
-    
+    background-color: #f1f1f1;
     text-align: center;
     margin-left: 25%;
     margin-right: 25%;
 }
 .stickyHeader {
+    margin-left: 0%;
+    margin-right: 0%;
     position: fixed;
     top: 0;
     width: 100%;
@@ -17,4 +19,36 @@
     position: fixed;
     top: 0;
     width: 100%;
+  }
+  .musicSection {
+      background-color: bisque;
+
+  }
+  .musicSection h1 {
+      text-align: center;
+      
+  }
+  .roseFloesHead {
+      margin-left: 20vw;
+  }
+  .RFdescription {
+      margin-left: 15vw;
+      margin-right: 55vw;
+  }
+  .loestusHead {
+        text-align: right;
+        margin-right: 20vw;
+  }
+  .loestusDescription {
+      text-align: right;
+      margin-right: 15vw;
+      margin-left: 55vw;
+  }
+  .scoringHead {
+      text-align: center;
+  }
+  .scoringDescription {
+      text-align: center;
+      margin-left: 15vw;
+      margin-right: 15vw;
   }

@@ -14,18 +14,33 @@
 
 <body>
     <main>
-        <section>
-            <h1></h1>
-            <p>The homepage for Brandon Peckham, web programmer, musician, and sound designer.</p>
+        <section class="musicSection">
+            <h1>Music</h1>
+            <h2 class="roseFloesHead"><a href="https://rosefloes.bandcamp.com">Rose Floes</a></h2>
+            <!-- Rose Floes will be shortened to "RF" now -->
+            <p class="RFdescription">
+                Rose Floes description. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati illo
+                reiciendis id odio mollitia pariatur. Aliquid, commodi corrupti aut autem sit quos, nam dolorem deleniti
+                impedit nostrum adipisci neque veritatis.
+            </p>
+            <br>
+            <h2 class="loestusHead"><a href="https://loestus.bandcamp.com">Loestus</a></h2>
+            <p class="loestusDescription">Loestus description. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Odio provident quidem explicabo natus aut a totam similique ipsa ullam nemo necessitatibus impedit
+                perferendis praesentium dolore voluptate, rem delectus suscipit aperiam.</p>
+            <br>
+            <h2 class="scoringHead" >Scoring & Sound Design</h2>
+            <p class="scoringDescription">Scoring/Sound design. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi impedit quis pariatur fugiat nostrum, aliquid vero officiis eveniet? Nisi voluptate iure ab enim facilis quidem excepturi earum, aliquid eligendi deserunt!</p>
+
         </section>
         <section>
-            <h2>Music</h2>
+            <h2></h2>
             <p>
-                I also make music.
+
             </p>
         </section>
         <section>
-<!-- add a bunch of lorem ipsum here to test sticky header -->
+            <!-- add a bunch of lorem ipsum here to test sticky header -->
         </section>
     </main>
 
@@ -38,9 +53,9 @@
 
     function headerStick() {
         if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
+            header.classList.add("stickyHeader");
         } else {
-            header.classList.remove("sticky");
+            header.classList.remove("stickyHeader");
         }
     }
 </script>
