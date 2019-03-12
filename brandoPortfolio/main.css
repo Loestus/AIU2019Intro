@@ -6,35 +6,23 @@
 .mainHeader {
     background-color: #f1f1f1;
     text-align: center;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin-top: 10px;
     width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
+    position: fixed;
 }
 .stickyHeader {
-    margin-left: 0%;
-    margin-right: 0%;
+    margin-top: 0px;
     position: fixed;
     top: 0;
-    width: 100%;
 }
-.stickyHeader + .content {
-    padding-top: 102px;
-}
-.sticky {
-    text-align: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  .musicSection {
+.musicSection {
       background-color: bisque;
       padding-top: 5px;
       width: 100vw;
   }
-  .musicSection h1 {
+.musicSection h1 {
       text-align: center;
       margin-left: 0;
       margin-right: 0;
