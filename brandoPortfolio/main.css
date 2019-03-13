@@ -28,6 +28,14 @@
       margin-right: 0;
       
   }
+  .rightImage {
+      margin-left: 55vw;
+      margin-right: 10vw;
+      max-width: 45vw;
+      max-height: 45vw;
+      float: right;
+      overflow: auto;
+  }
   .roseFloesHead {
       margin-left: 20vw;
   }
