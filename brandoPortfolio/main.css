@@ -1,5 +1,5 @@
 .bodyBG {
-    background-color: #ff0000;
+    background-color: gainsboro;
     margin: 0;
     padding: 0;
 }
@@ -17,7 +17,7 @@
     top: 0;
 }
 .musicSection {
-      background-color: bisque;
+      background-color: silver;
       padding-top: 5px;
       width: 100vw;
   }
@@ -26,17 +26,13 @@
       margin-left: 0;
       margin-right: 0;
   }
-  .roseFloesHead {
+  .centerHead {
       text-align: center;
   }
-  .loestusHead {
-        text-align: right;
-        margin-right: 20vw;
-  }
-  .loestusDescription {
-      text-align: right;
-      margin-right: 10vw;
-      margin-left: 55vw;
+  .centerTxt {
+      text-align: center;
+      margin-left: 20vw;
+      margin-right: 20vw;
   }
   .centerImg {
       display: block;
@@ -45,9 +41,4 @@
   }
   .scoringHead {
       text-align: center;
-  }
-  .scoringDescription {
-      text-align: center;
-      margin-left: 15vw;
-      margin-right: 15vw;
   }
