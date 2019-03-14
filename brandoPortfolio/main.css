@@ -6,11 +6,10 @@
 .mainHeader {
     background-color: #f1f1f1;
     text-align: center;
-    margin-top: 10px;
     width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    position: fixed;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* position: fixed; */
 }
 .stickyHeader {
     margin-top: 0px;
@@ -26,22 +25,36 @@
       text-align: center;
       margin-left: 0;
       margin-right: 0;
-      
   }
-  .rightImage {
-      margin-left: 55vw;
-      margin-right: 10vw;
-      max-width: 45vw;
-      max-height: 45vw;
-      float: right;
-      overflow: auto;
+  .flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
+  .flexText {
+    text-align: center;
+    width: 50%;
+    flex: 0 0 50%;
+  }
+  .flexText p {
+      margin-left: 5%;
+      margin-right: 5%;
+  }
+  .flexImage {
+      width: 100%;
+      flex: 0 0 50%;
+      line-height: normal;
+      justify-items: center;
+      align-items: center;
+  }
+  /* .flexImage img {
+      justify-items: center;
+      align-items: center;
+    width: 20%;
+} */
   .roseFloesHead {
       margin-left: 20vw;
-  }
-  .RFdescription {
-      margin-left: 10vw;
-      margin-right: 55vw;
   }
   .loestusHead {
         text-align: right;
