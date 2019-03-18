@@ -3,16 +3,18 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: gainsboro;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    margin-top: 0px;
+    height: 5vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .topHeader h1 {
     text-align: center;
 }
 .bodyBG {
     background-color: silver;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 .mainHeader {
     background-color: #f1f1f1;
@@ -29,8 +31,10 @@
 }
 .albumGrid {
     display: grid;
-    grid-template-columns: 50vw 50vw;
+    grid-template-columns: auto auto;
     grid-column-start: auto auto;
+    margin-left: 3vw;
+    margin-right: 3vw;
 }
 .musicSection {
       background-color: silver;
@@ -54,6 +58,8 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      max-height: 45vw;
+      max-width: 45vw;
   }
   .scoringHead {
       text-align: center;
