@@ -14,6 +14,11 @@
     margin: 0;
     padding: 0;
 }
+waterVid {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .mainHeader {
     background-color: #f1f1f1;
     text-align: center;
