@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" value="Math" id="math"> <p> Math grade.</p>
+    <br>
+    <input type="text" value="Science" id="science"> <p> Science grade.</p>
+    <br>
+    <input type="text" value="English" id="english"> <p> English grade.</p>
+    <br>
+    <input type="text" value="Art" id="art"> <p> Art grade.</p>
+    <br>
+    <input type="button" value="Get GPA" onclick="getGPA()">
+    <p id="output"></p>
+</body>
+<script type="text/javascript">
+
+    function makeArray() {
+        let math = document.getElementById("math").value;
+        let science = document.getElementById("science").value;
+        let english = document.getElementById("english").value;
+        let art = document.getElementById("art").value;
+        let mathNum = parseInt(math);
+        let scienceNum = parseInt(science);
+        let englishNum = parseInt(english);
+        let artNum = parseInt(art);
+        let grades = [mathNum, scienceNum, englishNum, artNum];
+        return grades;
+    }
+    function getGPA() {
+
+        let grades = makeArray()
+        console.log(grades + " GRADES ARRAY")
+        let total = 0;
+        for (i = 0; i < grades.length; i++) {
+            total = total + grades[i]
+            console.log(total + " TOTAL IN THE LOOP ")
+        }
+        let average = total / grades.length;
+        document.getElementById("output").innerHTML = "The GPA is " + average
+    }
+
+</script>
+
+</html>
