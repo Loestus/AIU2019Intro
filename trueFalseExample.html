@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" value="Put a value to set here!" id="valueSet">
+    <input type="button" value="Set the first value" onclick="setValue1()">
+
+
+    <input type="text" value="Test this value!" id="checkThis">
+    <input type="button" value="Set the second value" onclick="setValue2()">
+
+    
+    <br>
+    <input type="button" value="Do they match?" onclick="compare()">
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var value1 = ""; //This is the value that we'll be checking against.
+    var value2 = ""; //This is what we're going to check to see if it matches value1
+    //This function will change the value of value1 to what's in the first text box
+    function setValue1() {
+        value1 = document.getElementById("valueSet").value;
+        //This looks at the element above with the id "valueSet" and takes what's in the "value" property
+        //then it changes the value of value1 to what's there
+        console.log(value1)
+    }
+    function setValue2() {
+        value2 = document.getElementById("checkThis").value; //This sets value2 to be what's in the 2nd text box above
+        console.log(value2)
+    }
+    function compare() {
+        let check1 = value1; //Create new variables that are only in this function that are the values of value1 and value2
+        let check2 = value2;
+        if (check1 === check2) { //Checks to see if value1 and value2 are the same
+        //The reason I use "===" is to make sure it checks for an EXACT match
+        //Without all 3 equal signs it might try to compare numbers to strings and get confused
+            alert("They match!")//If they are, create a pop up that says "They match!"
+        }
+        else { //If they aren't the same:
+            alert("They don't match!") //Create a pop up that says "They don't match!"
+        }
+    }
+</script>
+
+</html>
