@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Print The Users!" onclick="printOut()">
+    <p id="first">First names: </p>
+    <p id="last">Last Names: </p>
+</body>
+<script type="text/javascript">
+let person;
+let result = fetch('https://randomuser.me/api/?results=10');
+result.then(
+    function(x) {
+        return x.json();
+    }
+).then(
+    function(y){
+        person = y;
+        console.log(y);
+    }
+)
+function printOut() {
+for (i=0; i < person.results.length; i++) {
+    document.getElementById("first").innerHTML += person.results[i].name.first;
+    document.getElementById("last").innerHTML += person.results[i].name.last;
+}
+}
+
+
+
+// let example = fetch('https://randomuser.me/api'); //Fetches a package
+// console.log(example) //example doesn't exist really
+// //at this point example= a package receipt
+
+// let person = example.then( //the .then means "I know this is gonna take time to get, so do THIS when you have it"
+//     function(example) {
+//         return example.json();
+//     }
+// ).then(
+//     function(x){
+//         console.log(x)
+//     }
+// )
+
+// function add(x) {
+//     return x + 5
+// }
+
+// let sum = add(20)
+</script>
+</html>
+
+
