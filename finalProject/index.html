@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <img src="" alt="" id="imgDisplay">
     <p id="imgurl"></p>
     <input type="text" id="dateInput">
     <input type="button" value="Get image by Date" id="dateButton" onclick="dateChange()">
@@ -44,6 +45,7 @@
                 console.log(y) + 'new object';
             }
         )
+        document.getElementById("imgDisplay").src = currentData.url;
         console.log(currentURL)
     }
 // .then(
