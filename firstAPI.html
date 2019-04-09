@@ -25,9 +25,12 @@ result.then(
     }
 )
 function printOut() {
+    let x = "";
 for (i=0; i < person.results.length; i++) {
-    document.getElementById("first").innerHTML += person.results[i].name.first;
-    document.getElementById("last").innerHTML += person.results[i].name.last;
+
+    x += `First name : ${person.results[i].name.first}` ;
+    document.getElementById("first").innerHTML = x;
+    // document.getElementById("last").innerHTML += person.results[i].name.last;
 }
 }
 

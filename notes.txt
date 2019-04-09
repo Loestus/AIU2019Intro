@@ -1,0 +1,26 @@
+WHEN DECIDING ON A PROJECT GO THROUGH THESE STEPS TO DECIDE HOW TO PROCEED AND WHATNOT:
+FIGURE THESE OUT BEFORE YOU BEGIN:
+
+TECH SPECS:
+- What displays do you have to support?
+- What browsers?
+- What languages are you going to use?
+- What third party libraries/technologies do you require?
+	- What are the third party requirements of you?
+
+
+USER STORIES VOCAB:
+- Agile teams
+	- Sprints that last 1-4 wks
+- Come up with hypothetical stories from users who would use your app/site
+	- Why are they using it?
+	- What are things about them?
+When writing their stories come up with these:
+Who? is writing them?
+What? are they doing with it?
+Why? are they using the service?
+Ex.
+"As a climber I want to select a route based on difficulty to match so I don't
+waste my weekend searching"
+
+USER STORIES:
