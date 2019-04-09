@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <p id="imgurl"></p>
+    <input type="text" id="dateInput">
+    <input type="button" value="Get image by Date" id="dateButton" onclick="dateChange()">
 </body>
 <script type="text/javascript">
-// https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
-let currentData;
-let result = fetch('https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H');
-result.then(
-    function(x) {
-        return x.json();
+    // https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
+    let currentData;
+    let currentURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
+    let currentDate;
+    let result = fetch(currentURL);
+    result.then(
+        function (x) {
+            return x.json();
+        }
+    ).then(
+        function (y) {
+            currentData = y;
+            console.log(y);
+        }
+    )
+    function dateChange() {
+        //Eventually perform checks to make sure that the date is valid first
+        currentDate = '&date=' + document.getElementById("dateInput").value;
+        currentURL += currentDate;
+        result = fetch(currentURL)
+        result.then(
+            function (x) {
+                return x.json();
+            }
+        ).then(
+            function (y) {
+                currentData = y;
+                console.log(y) + 'new object';
+            }
+        )
+        console.log(currentURL)
     }
-).then(
-    function(y){
-        currentData = y;
-        console.log(y);
-    }
-)
+// .then(
+//     function(x) {
+//         document.getElementById("imgurl").innerHTML = currentData.url;
+//     }
+// )
 
 </script>
+
 </html>
