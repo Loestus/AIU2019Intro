@@ -11,14 +11,110 @@
 <body>
     <img src="" alt="" id="imgDisplay">
     <p id="imgurl"></p>
-    <input type="text" id="dateInput">
+    <!-- <input type="text" id="dateInput"> -->
+    <select name="YYYY" id="yearInput" onchange="restrict1995()"></select>
+    <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
+    <select name="DD" id="dayInput"></select>
     <input type="button" value="Get image by Date" id="dateButton" onclick="dateChange()">
 </body>
 <script type="text/javascript">
-    // https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
-    let currentData;
-    let currentURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
-    let currentDate;
+    // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
+
+    let response; //The object currently loaded from the API
+    let currentURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H'; //The current URL used for the fetch
+    let currentDate; //Current date selected by the user
+    const monthArray = [
+        {
+            name: "Jan",
+            length: 31
+        },
+        {
+            name: "Feb",
+            length: 28
+        },
+        {
+            name: "Mar",
+            length: 30
+        },
+        {
+            name: "Apr",
+            length: 30
+        },
+        {
+            name: "May",
+            length: 31
+        },
+        {
+            name: "Jun",
+            length: 30
+        },
+        {
+            name: "Jul",
+            length: 31
+        },
+        {
+            name: "Aug",
+            length: 31
+        },
+        {
+            name: "Sep",
+            length: 30
+        },
+        {
+            name: "Oct",
+            length: 31
+        },
+        {
+            name: "Nov",
+            length: 30
+        },
+        {
+            name: "Dec",
+            length: 31
+        }
+    ]
+
+    function restrict1995() {
+        if (document.getElementById("yearInput").value == 1995) {
+            populateMonthSelect(5);
+        }
+        else {
+            populateMonthSelect()
+        }
+    }
+
+    function populateYearSelect() {
+        let thisYear = new Date()
+        for (let i = 1995; i <= thisYear.getFullYear(); i++) {
+            const newOption = `<option value=${i}>${i}</option>`;
+            document.getElementById("yearInput").innerHTML += newOption;
+        }
+    }
+    function populateMonthSelect(startMonth = 0) {
+        document.getElementById("monthInput").innerHTML = "";
+        for (let i = startMonth; i < monthArray.length; i++) {
+            const newOption = `<option value=${i}>${monthArray[i].name}</option>`;
+            document.getElementById("monthInput").innerHTML += newOption;
+        }
+    }
+    populateYearSelect()
+    populateMonthSelect()
+
+    function populateDaySelect() {
+        let startDay = 0;
+
+        const currentSelection = document.getElementById("monthInput").value;
+
+        if (document.getElementById("yearInput").value == 1995 && document.getElementById("monthInput").value == 5) {
+            startDay = 19;
+        }
+
+        document.getElementById("dayInput").innerHTML = ""
+        for (let i = startDay; i < monthArray[currentSelection].length; i++) {
+            const newOption = `<option value=${i}>${i + 1}</option>`;
+            document.getElementById("dayInput").innerHTML += newOption;
+        }
+    }
     let result = fetch(currentURL);
     result.then(
         function (x) {
@@ -26,14 +122,31 @@
         }
     ).then(
         function (y) {
-            currentData = y;
+            response = y;
             console.log(y);
         }
     )
+
+
+    function getFormattedDate() {
+        let yearSelect = document.getElementById("yearInput").value;
+        let monthSelect = document.getElementById("monthInput").value;
+        let daySelect = document.getElementById("dayInput").value;
+        monthSelect++;
+        daySelect++;
+        if (monthSelect < 10) {
+            monthSelect = "0" + monthSelect.toString()
+        }
+        if (daySelect < 10) {
+            daySelect = "0" + daySelect.toString()
+        }
+        return `&date=${yearSelect}-${monthSelect}-${daySelect}`
+    }
+
     function dateChange() {
-        //Eventually perform checks to make sure that the date is valid first
-        currentDate = '&date=' + document.getElementById("dateInput").value;
-        currentURL += currentDate;
+        const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
+        currentDate = getFormattedDate();
+        currentURL = startURL + currentDate;
         result = fetch(currentURL)
         result.then(
             function (x) {
@@ -41,18 +154,15 @@
             }
         ).then(
             function (y) {
-                currentData = y;
+                response = y;
                 console.log(y) + 'new object';
             }
+        ).then(function () {
+            document.getElementById("imgDisplay").src = response.url;
+            console.log(currentURL)
+        }
         )
-        document.getElementById("imgDisplay").src = currentData.url;
-        console.log(currentURL)
     }
-// .then(
-//     function(x) {
-//         document.getElementById("imgurl").innerHTML = currentData.url;
-//     }
-// )
 
 </script>
 
