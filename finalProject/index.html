@@ -16,6 +16,7 @@
     <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
     <select name="DD" id="dayInput"></select>
     <input type="button" value="Get image by Date" id="dateButton" onclick="newFetch()">
+    <input type="button" value="Test random date" onclick="randomDate()">
 </body>
 <script type="text/javascript">
     // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
@@ -146,7 +147,9 @@
     function newFetch() {
         const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
         currentDate = getFormattedDate();
+
         currentURL = startURL + currentDate;
+
         result = fetch(currentURL)
         result.then(
             function (x) {
@@ -165,15 +168,44 @@
         )
     }
 
+        function actualFetch(url = `https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H`) {
 
-//Randomize the stuff
-    function randomYear() {
-        math.rand
     }
-    function fullRandomize() {
 
+    function randomFetch() {
+        const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
+        currentDate = randomDate();
 
+        currentURL = startURL + currentDate;
 
+        result = fetch(currentURL)
+        result.then(
+            function (x) {
+                return x.json();
+            }
+        ).then(
+            function (y) {
+                response = y;
+                console.log(y) + 'new object';
+            }
+        ).then(function () {
+            document.getElementById("imgDisplay").src = response.url;
+            document.getElementById("explanation").innerHTML = response.explanation;
+            console.log(currentURL)
+        }
+        )
+    }
+
+    //Randomize the stuff
+    function randomDate() {
+        start = new Date(1995, 6, 20)
+        end = new Date()
+        let newRandom = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+        console.log(newRandom)
+        let randoYear = newRandom.getFullYear();
+        let randoMonth = newRandom.getMonth();
+        let randoDay = newRandom.getDate();
+        return `&date=${randoYear}-${randoMonth}-${randoDay}`
     }
 </script>
 
