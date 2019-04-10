@@ -10,13 +10,14 @@
 
 <body>
     <img src="" alt="" id="imgDisplay">
+    <p id="imgDate"></p>
     <p id="explanation"></p>
     <!-- <input type="text" id="dateInput"> -->
     <select name="YYYY" id="yearInput" onchange="restrict1995()"></select>
     <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
     <select name="DD" id="dayInput"></select>
-    <input type="button" value="Get image by Date" id="dateButton" onclick="newFetch()">
-    <input type="button" value="Test random date" onclick="randomDate()">
+    <input type="button" value="Get image by Date" id="dateButton" onclick="fetchByDate()">
+    <input type="button" value="Get random image" onclick="randomFetch()">
 </body>
 <script type="text/javascript">
     // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
@@ -116,17 +117,7 @@
             document.getElementById("dayInput").innerHTML += newOption;
         }
     }
-    let result = fetch(currentURL);
-    result.then(
-        function (x) {
-            return x.json();
-        }
-    ).then(
-        function (y) {
-            response = y;
-            console.log(y);
-        }
-    )
+    newFetch() //Load up today's image on page load
 
 
     function getFormattedDate() {
@@ -144,13 +135,18 @@
         return `&date=${yearSelect}-${monthSelect}-${daySelect}`
     }
 
-    function newFetch() {
+    function fetchByDate() {
         const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
         currentDate = getFormattedDate();
 
         currentURL = startURL + currentDate;
 
-        result = fetch(currentURL)
+        newFetch(currentURL)
+
+    }
+
+    function newFetch(url = `https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H`) {
+        result = fetch(url)
         result.then(
             function (x) {
                 return x.json();
@@ -163,13 +159,10 @@
         ).then(function () {
             document.getElementById("imgDisplay").src = response.url;
             document.getElementById("explanation").innerHTML = response.explanation;
+            document.getElementById("imgDate").innerHTML = response.date;
             console.log(currentURL)
         }
         )
-    }
-
-        function actualFetch(url = `https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H`) {
-
     }
 
     function randomFetch() {
@@ -178,25 +171,9 @@
 
         currentURL = startURL + currentDate;
 
-        result = fetch(currentURL)
-        result.then(
-            function (x) {
-                return x.json();
-            }
-        ).then(
-            function (y) {
-                response = y;
-                console.log(y) + 'new object';
-            }
-        ).then(function () {
-            document.getElementById("imgDisplay").src = response.url;
-            document.getElementById("explanation").innerHTML = response.explanation;
-            console.log(currentURL)
-        }
-        )
+        newFetch(currentURL)
     }
 
-    //Randomize the stuff
     function randomDate() {
         start = new Date(1995, 6, 20)
         end = new Date()
