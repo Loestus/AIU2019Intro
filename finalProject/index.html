@@ -10,12 +10,12 @@
 
 <body>
     <img src="" alt="" id="imgDisplay">
-    <p id="imgurl"></p>
+    <p id="explanation"></p>
     <!-- <input type="text" id="dateInput"> -->
     <select name="YYYY" id="yearInput" onchange="restrict1995()"></select>
     <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
     <select name="DD" id="dayInput"></select>
-    <input type="button" value="Get image by Date" id="dateButton" onclick="dateChange()">
+    <input type="button" value="Get image by Date" id="dateButton" onclick="newFetch()">
 </body>
 <script type="text/javascript">
     // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
@@ -143,7 +143,7 @@
         return `&date=${yearSelect}-${monthSelect}-${daySelect}`
     }
 
-    function dateChange() {
+    function newFetch() {
         const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
         currentDate = getFormattedDate();
         currentURL = startURL + currentDate;
@@ -159,6 +159,7 @@
             }
         ).then(function () {
             document.getElementById("imgDisplay").src = response.url;
+            document.getElementById("explanation").innerHTML = response.explanation;
             console.log(currentURL)
         }
         )
