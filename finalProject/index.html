@@ -10,6 +10,7 @@
 
 <body>
     <img src="" alt="" id="imgDisplay">
+    <p id="vidLink"></p>
     <p id="imgDate"></p>
     <p id="explanation"></p>
     <!-- <input type="text" id="dateInput"> -->
@@ -156,8 +157,17 @@
                 response = y;
                 console.log(y) + 'new object';
             }
-        ).then(function () {
+        ).then(function () {//ADD CHECK FOR VIDEO OR IMAGE HERE
+            if (response.media_type == "image") {
             document.getElementById("imgDisplay").src = response.url;
+            document.getElementById("vidDisplay").src = "";
+            }
+            if (response.media_type == "video") {
+                let vidURL = response.url
+                let vidText = `<a href = ${vidURL}> APOD Video </a>`
+            document.getElementById("imgDisplay").src = "";
+            document.getElementById("vidLink").innerHTML = vidText;
+            }
             document.getElementById("explanation").innerHTML = response.explanation;
             document.getElementById("imgDate").innerHTML = response.date;
             console.log(currentURL)
