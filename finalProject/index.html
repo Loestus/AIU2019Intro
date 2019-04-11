@@ -160,7 +160,7 @@
         ).then(function () {//ADD CHECK FOR VIDEO OR IMAGE HERE
             if (response.media_type == "image") {
             document.getElementById("imgDisplay").src = response.url;
-            document.getElementById("vidDisplay").src = "";
+            document.getElementById("vidLink").innerHTML = "";
             }
             if (response.media_type == "video") {
                 let vidURL = response.url
