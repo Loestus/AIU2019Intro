@@ -157,7 +157,7 @@
                 response = y;
                 console.log(y) + 'new object';
             }
-        ).then(function () {//ADD CHECK FOR VIDEO OR IMAGE HERE
+        ).then(function () {
             if (response.media_type == "image") {
             document.getElementById("imgDisplay").src = response.url;
             document.getElementById("vidLink").innerHTML = "";
@@ -175,7 +175,7 @@
         )
     }
 
-    function randomFetch() {
+    function randomFetch() {//MAKE A CHECK SO NO 0 VALUE CAN BE  RETURNED
         const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
         currentDate = randomDate();
 
