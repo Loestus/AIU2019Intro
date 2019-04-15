@@ -1,0 +1,39 @@
+body {
+    background-color: beige;
+}
+.buttons {
+    background-color: thistle;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    opacity: 0.6;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .buttons:hover {opacity: 1}
+.description {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.imgHolder {
+text-align: center;
+}
+.textBoxes {
+    text-align: center;
+    padding: 2px;
+}
+.buttonHolder {
+    text-align: center;
+    padding: 2px;
+}
+.infoFrame {
+    text-align: center;
+}
+.topHeader {
+    text-align: center;
+}
+.currentImg {
+    border-style: groove;
+}

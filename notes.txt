@@ -23,4 +23,19 @@ Ex.
 "As a climber I want to select a route based on difficulty to match so I don't
 waste my weekend searching"
 
-USER STORIES:
+
+
+---- FRAMEWORKS
+
+Vue JS
+Angular JS
+React JS
+
+Learn a framework!!!
+
+Check out Node.js (Back end JS stuff)
+
+Eloquent Javascript - free online book
+Javascript the Good Parts - book
+
+Keep in touch for learning node.js stuff every week or so

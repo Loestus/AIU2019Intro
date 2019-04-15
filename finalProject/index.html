@@ -5,20 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="apiFinal.css">
     <title>Document</title>
 </head>
-
+<header>
+    <h1 class="topHeader">Astronomy Picture of the Day</h1>
+</header>
 <body>
-    <img src="" alt="" id="imgDisplay">
-    <p id="vidLink"></p>
+    <div class="imgHolder">
+        <img src="" alt="" id="imgDisplay" class="currentImg">
+        <p id="vidLink"></p>
+    </div>
+    <div class="infoFrame">
+    <h3 id="imgTitle"></h3>
+    <p id="explanation" class="description"></p>
     <p id="imgDate"></p>
-    <p id="explanation"></p>
+    </div>
     <!-- <input type="text" id="dateInput"> -->
-    <select name="YYYY" id="yearInput" onchange="restrict1995()"></select>
-    <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
-    <select name="DD" id="dayInput"></select>
-    <input type="button" value="Get image by Date" id="dateButton" onclick="fetchByDate()">
-    <input type="button" value="Get random image" onclick="randomFetch()">
+    <div class="textBoxes">
+        <select name="YYYY" id="yearInput" onchange="restrict1995()"></select>
+        <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
+        <select name="DD" id="dayInput"></select>
+    </div>
+    <div class="buttonHolder">
+        <input type="button" value="Get image by Date" id="dateButton" onclick="fetchByDate()" class="buttons">
+        <input type="button" value="Get random image" onclick="randomFetch()" class="buttons">
+    </div>
 </body>
 <script type="text/javascript">
     // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
@@ -159,17 +171,18 @@
             }
         ).then(function () {
             if (response.media_type == "image") {
-            document.getElementById("imgDisplay").src = response.url;
-            document.getElementById("vidLink").innerHTML = "";
+                document.getElementById("imgDisplay").src = response.url;
+                document.getElementById("vidLink").innerHTML = "";
             }
             if (response.media_type == "video") {
                 let vidURL = response.url
                 let vidText = `<a href = ${vidURL}> APOD Video </a>`
-            document.getElementById("imgDisplay").src = "";
-            document.getElementById("vidLink").innerHTML = vidText;
+                document.getElementById("imgDisplay").src = "";
+                document.getElementById("vidLink").innerHTML = vidText;
             }
             document.getElementById("explanation").innerHTML = response.explanation;
             document.getElementById("imgDate").innerHTML = response.date;
+            document.getElementById("imgTitle").innerHTML = response.title;
             console.log(currentURL)
         }
         )
@@ -187,7 +200,7 @@
     function randomDate() {
         start = new Date(1995, 6, 20)
         end = new Date()
-        let newRandom = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+        let newRandom = new Date((start.getTime() + Math.random() * (end.getTime() - start.getTime()) + 1))
         console.log(newRandom)
         let randoYear = newRandom.getFullYear();
         let randoMonth = newRandom.getMonth();
