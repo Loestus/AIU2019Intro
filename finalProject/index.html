@@ -11,15 +11,16 @@
 <header>
     <h1 class="topHeader">Astronomy Picture of the Day</h1>
 </header>
+
 <body>
     <div class="imgHolder">
+        <p id="imgDate"></p>
         <img src="" alt="" id="imgDisplay" class="currentImg">
         <p id="vidLink"></p>
     </div>
     <div class="infoFrame">
-    <h3 id="imgTitle"></h3>
-    <p id="explanation" class="description"></p>
-    <p id="imgDate"></p>
+        <h3 id="imgTitle"></h3>
+        <p id="explanation" class="description"></p>
     </div>
     <!-- <input type="text" id="dateInput"> -->
     <div class="textBoxes">
@@ -28,8 +29,8 @@
         <select name="DD" id="dayInput"></select>
     </div>
     <div class="buttonHolder">
-        <input type="button" value="Get image by Date" id="dateButton" onclick="fetchByDate()" class="buttons">
-        <input type="button" value="Get random image" onclick="randomFetch()" class="buttons">
+        <input type="button" value="Image by date" id="dateButton" onclick="fetchByDate()" class="buttons">
+        <input type="button" value="Random" onclick="randomFetch()" class="buttons">
     </div>
 </body>
 <script type="text/javascript">
@@ -197,10 +198,22 @@
         newFetch(currentURL)
     }
 
+    function randomNumber() {
+        let x = Math.random()
+        if  (x == 0) {
+            console.log("random number was zero!----------")
+            x += 0.001
+        }
+        return x
+        console.log(x)
+    }
     function randomDate() {
         start = new Date(1995, 6, 20)
         end = new Date()
-        let newRandom = new Date((start.getTime() + Math.random() * (end.getTime() - start.getTime()) + 1))
+        let milliseconds = randomNumber()
+
+
+        let newRandom = new Date(start.getTime() + milliseconds * (end.getTime() - start.getTime()))
         console.log(newRandom)
         let randoYear = newRandom.getFullYear();
         let randoMonth = newRandom.getMonth();
