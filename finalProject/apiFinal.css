@@ -1,18 +1,23 @@
 body {
-    background-color: beige;
+    background-color: darkgray;
 }
 .buttons {
-    background-color: thistle;
-    border: none;
+    background-color: honeydew;
+    border-style: solid;
+    border-width: 1px;
+    border: antiquewhite;
+    border-radius: 4px;
     color: black;
-    padding: 16px 32px;
+    padding: 5px 5px;
     text-align: center;
-    opacity: 0.6;
     transition: 0.3s;
     cursor: pointer;
   }
   
-  .buttons:hover {opacity: 1}
+  .buttons:hover {
+    background-color: darkslategray;
+    color: honeydew;
+}
 .description {
     margin-left: 5vw;
     margin-right: 5vw;
@@ -36,4 +41,6 @@ text-align: center;
 }
 .currentImg {
     border-style: groove;
+    border-width: 5px;
+    border-color: bisque;
 }

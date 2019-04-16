@@ -202,7 +202,7 @@
         let x = Math.random()
         if  (x == 0) {
             console.log("random number was zero!----------")
-            x += 0.001
+            x += 0.01
         }
         return x
         console.log(x)
@@ -216,7 +216,7 @@
         let newRandom = new Date(start.getTime() + milliseconds * (end.getTime() - start.getTime()))
         console.log(newRandom)
         let randoYear = newRandom.getFullYear();
-        let randoMonth = newRandom.getMonth();
+        let randoMonth = newRandom.getMonth() + 1;
         let randoDay = newRandom.getDate();
         return `&date=${randoYear}-${randoMonth}-${randoDay}`
     }
