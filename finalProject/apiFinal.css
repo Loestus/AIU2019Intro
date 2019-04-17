@@ -44,3 +44,7 @@ text-align: center;
     border-width: 5px;
     border-color: bisque;
 }
+.footerNav {
+    padding: 10px;
+    text-align: center;
+}

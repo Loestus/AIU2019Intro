@@ -32,6 +32,12 @@
         <input type="button" value="Image by date" id="dateButton" onclick="fetchByDate()" class="buttons">
         <input type="button" value="Random" onclick="randomFetch()" class="buttons">
     </div>
+    <footer>
+        <nav id="footerNav" class="footerNav">
+            <a href="https://apod.nasa.gov/apod/">NASA APOD</a> |
+            <a href="https://github.com/nasa/apod-api">APOD API</a>
+        </nav>
+    </footer>
 </body>
 <script type="text/javascript">
     // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
@@ -200,7 +206,7 @@
 
     function randomNumber() {
         let x = Math.random()
-        if  (x == 0) {
+        if (x == 0) {
             console.log("random number was zero!----------")
             x += 0.01
         }
