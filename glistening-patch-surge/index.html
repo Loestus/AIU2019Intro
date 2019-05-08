@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="sound.css">
+    <title>Sound</title>
+</head>
+<header class="topHeader">
+    <h1></h1>
+</header>
+
+<body class="bodyBG">
+    <nav class="navBar" id="mainHeader">
+        <a href="./index.html">Sound</a> | 
+        <a href="./apod.html">APOD</a>
+    </nav>
+    <main>
+        <section class="musicSection">
+            <div>
+                <h2 class="scoringHead">Scoring & Sound Design</h2>
+                <p class="centerTxt">I've scored and designed sound for mobile apps and
+                    animations. Please feel free to
+                    contact
+                    me if you are interested in having me work on a project for you! Below is a video that I scored for
+                    my friend Rachel. If
+                    you
+                    would like to purchase the song you can do so <a href="https://loestus.bandcamp.com/track/water"
+                        target="_blank">here</a>. If you would like to check out more of
+                    Rachel's work you can find her on <a href="http://sixofclovers.tumblr.com/"
+                        target="_blank">tumblr</a> and <a href="https://www.patreon.com/sixofclovers"
+                        target="_blank">Patreon</a>.
+                </p>
+                <br>
+                <div align="center">
+                    <video width="885" height="500" controls>
+                        <source src="./media/waterAnimation.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <br>
+                <h1>Music Projects</h1>
+                <br>
+            </div>
+
+            <div id="albumGrid" class="albumGrid">
+                <div>
+
+
+
+                    <img src="./media/roseFloesEP.jpg" class="centerImg"
+                        alt="Cover art for the Rose Floes EP by Rose Floes">
+                    <h2 class="centerHead"><a href="https://rosefloes.bandcamp.com" target="_blank">Rose Floes</a></h2>
+                    <p class="centerTxt"> The Rose Floes EP is a release created over the course of about a year. It
+                        features Brandon
+                        Peckham
+                        on
+                        drums, vocals, keys, and guitar. Rain Bernal on keys, vocals, guitars, and percussion. Amanda
+                        Carreon on
+                        vocals. Produced by Brandon Peckham and Rain Bernal. Artwork by Rebecca Maltby. </p>
+
+
+
+                </div>
+
+
+                <div>
+
+
+                    <img src="./media/saturnEP.jpg" class="centerImg" alt="Cover art for the Saturn EP by Loestus">
+                    <h2 class="centerHead"><a href="https://loestus.bandcamp.com" target="_blank">Loestus</a></h2>
+                    <p class="centerTxt">Loestus is my solo music project. I've always enjoyed experimenting with
+                        different sounds, changing my approach to creating with every new project I begin. You'll find
+                        all
+                        music that I've made on my own as well as some of the music I've made for other projects here.
+                    </p>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+<script>
+    window.onscroll = function () { headerStick() };
+
+    var header = document.getElementById("mainHeader");
+    var sticky = header.offsetTop;
+
+
+
+    function headerStick() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("stickyHeader");
+        } else {
+            header.classList.remove("stickyHeader");
+        }
+    }
+</script>
+
+</html>

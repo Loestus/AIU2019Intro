@@ -1,0 +1,65 @@
+body {
+    background-color: silver;
+}
+.buttons {
+    background-color: honeydew;
+    border-style: solid;
+    border-width: 1px;
+    border: antiquewhite;
+    border-radius: 4px;
+    color: black;
+    padding: 5px 5px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .buttons:hover {
+    background-color: darkslategray;
+    color: honeydew;
+}
+.description {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.imgHolder {
+text-align: center;
+}
+.textBoxes {
+    text-align: center;
+    padding: 2px;
+}
+.buttonHolder {
+    text-align: center;
+    padding: 2px;
+}
+.infoFrame {
+    text-align: center;
+}
+.topHeader {
+    text-align: center;
+}
+.currentImg {
+    border-style: groove;
+    border-width: 5px;
+    border-color: bisque;
+}
+.footerNav {
+    padding: 10px;
+    text-align: center;
+}
+
+/* -- */
+.navBar {
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* position: fixed; */
+}
+.stickyHeader {
+    margin-top: 0px;
+    position: fixed;
+    top: 0;
+}

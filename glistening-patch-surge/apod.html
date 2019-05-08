@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="apod.css">
+    <title>Astronomy Picture of the Day</title>
+</head>
+<header>
+    <h1 class="topHeader">Astronomy Picture of the Day</h1>
+</header>
+
+<body>
+    <nav class="navBar" id="mainHeader">
+        <a href="./index.html">Sound</a> |
+        <a href="./apod.html">APOD</a>
+    </nav>
+    <div class="imgHolder">
+        <p id="imgDate"></p>
+        <img src="" alt="Click the link below to see the astronomy video of the day!" id="imgDisplay" class="currentImg">
+        <p id="vidLink"></p>
+    </div>
+    <div class="infoFrame">
+        <h3 id="imgTitle"></h3>
+        <p id="explanation" class="description"></p>
+    </div>
+    <!-- <input type="text" id="dateInput"> -->
+    <div class="textBoxes">
+        <select name="YYYY" id="yearInput" onchange="restrict1995()"></select>
+        <select name="MM" id="monthInput" onchange="populateDaySelect()"></select>
+        <select name="DD" id="dayInput"></select>
+    </div>
+    <div class="buttonHolder">
+        <input type="button" value="Image by date" id="dateButton" onclick="fetchByDate()" class="buttons">
+        <input type="button" value="Random" onclick="randomFetch()" class="buttons">
+    </div>
+    <br>
+    <br>
+    <footer>
+        <nav id="footerNav" class="footerNav">
+            <a href="https://apod.nasa.gov/apod/">NASA APOD</a> |
+            <a href="https://github.com/nasa/apod-api">APOD API</a>
+        </nav>
+    </footer>
+</body>
+<script type="text/javascript">
+    // Demo fetch provided https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H
+
+    let response; //The object currently loaded from the API
+    let currentURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H'; //The current URL used for the fetch
+    let currentDate; //Current date selected by the user
+    const monthArray = [
+        {
+            name: "Jan",
+            length: 31
+        },
+        {
+            name: "Feb",
+            length: 28
+        },
+        {
+            name: "Mar",
+            length: 30
+        },
+        {
+            name: "Apr",
+            length: 30
+        },
+        {
+            name: "May",
+            length: 31
+        },
+        {
+            name: "Jun",
+            length: 30
+        },
+        {
+            name: "Jul",
+            length: 31
+        },
+        {
+            name: "Aug",
+            length: 31
+        },
+        {
+            name: "Sep",
+            length: 30
+        },
+        {
+            name: "Oct",
+            length: 31
+        },
+        {
+            name: "Nov",
+            length: 30
+        },
+        {
+            name: "Dec",
+            length: 31
+        }
+    ]
+
+    function restrict1995() {
+        if (document.getElementById("yearInput").value == 1995) {
+            populateMonthSelect(5);
+        }
+        else {
+            populateMonthSelect()
+        }
+    }
+
+    function populateYearSelect() {
+        let thisYear = new Date()
+        for (let i = 1995; i <= thisYear.getFullYear(); i++) {
+            const newOption = `<option value=${i}>${i}</option>`;
+            document.getElementById("yearInput").innerHTML += newOption;
+        }
+    }
+    function populateMonthSelect(startMonth = 0) {
+        document.getElementById("monthInput").innerHTML = "";
+        for (let i = startMonth; i < monthArray.length; i++) {
+            const newOption = `<option value=${i}>${monthArray[i].name}</option>`;
+            document.getElementById("monthInput").innerHTML += newOption;
+        }
+    }
+    populateYearSelect()
+    populateMonthSelect()
+
+    function populateDaySelect() {
+        let startDay = 0;
+
+        const currentSelection = document.getElementById("monthInput").value;
+
+        if (document.getElementById("yearInput").value == 1995 && document.getElementById("monthInput").value == 5) {
+            startDay = 19;
+        }
+
+        document.getElementById("dayInput").innerHTML = ""
+        for (let i = startDay; i < monthArray[currentSelection].length; i++) {
+            const newOption = `<option value=${i}>${i + 1}</option>`;
+            document.getElementById("dayInput").innerHTML += newOption;
+        }
+    }
+    newFetch() //Load up today's image on page load
+
+
+    function getFormattedDate() {
+        let yearSelect = document.getElementById("yearInput").value;
+        let monthSelect = document.getElementById("monthInput").value;
+        let daySelect = document.getElementById("dayInput").value;
+        monthSelect++;
+        daySelect++;
+        if (monthSelect < 10) {
+            monthSelect = "0" + monthSelect.toString()
+        }
+        if (daySelect < 10) {
+            daySelect = "0" + daySelect.toString()
+        }
+        return `&date=${yearSelect}-${monthSelect}-${daySelect}`
+    }
+
+    function fetchByDate() {
+        const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
+        currentDate = getFormattedDate();
+
+        currentURL = startURL + currentDate;
+
+        newFetch(currentURL)
+
+    }
+
+    function newFetch(url = `https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H`) {
+        result = fetch(url)
+        result.then(
+            function (x) {
+                return x.json();
+            }
+        ).then(
+            function (y) {
+                response = y;
+                console.log(y) + 'new object';
+            }
+        ).then(function () {
+            if (response.media_type == "image") {
+                document.getElementById("imgDisplay").src = response.url;
+                document.getElementById("vidLink").innerHTML = "";
+            }
+            if (response.media_type == "video") {
+                let vidURL = response.url
+                let vidText = `<a href = ${vidURL}> APOD Video </a>`
+                document.getElementById("imgDisplay").src = "";
+                document.getElementById("vidLink").innerHTML = vidText;
+            }
+            document.getElementById("explanation").innerHTML = response.explanation;
+            document.getElementById("imgDate").innerHTML = response.date;
+            document.getElementById("imgTitle").innerHTML = response.title;
+            //console.log(currentURL)
+        }
+        )
+    }
+
+    function randomFetch() {//MAKE A CHECK SO NO 0 VALUE CAN BE  RETURNED
+        const startURL = 'https://api.nasa.gov/planetary/apod?api_key=qP4VGu0EaDXIHbua7s1XNDZOw7QgXwd3fxyFd43H';
+        currentDate = randomDate();
+
+        currentURL = startURL + currentDate;
+
+        newFetch(currentURL)
+    }
+
+    function randomNumber() {
+        let x = Math.random()
+        if (x == 0) {
+            console.log("random number was zero!----------")
+            x += 0.01
+        }
+        return x
+        console.log(x)
+    }
+    function randomDate() {
+        start = new Date(1995, 6, 20)
+        end = new Date()
+        let milliseconds = randomNumber()
+
+
+        let newRandom = new Date(start.getTime() + milliseconds * (end.getTime() - start.getTime()))
+        console.log(newRandom)
+        let randoYear = newRandom.getFullYear();
+        let randoMonth = newRandom.getMonth() + 1;
+        let randoDay = newRandom.getDate();
+        return `&date=${randoYear}-${randoMonth}-${randoDay}`
+    }
+
+
+
+    window.onscroll = function () { headerStick() };
+
+    var header = document.getElementById("mainHeader");
+    var sticky = header.offsetTop;
+
+
+    //--
+    // function headerStick() {
+    //     if (window.pageYOffset > sticky) {
+    //         header.classList.add("stickyHeader");
+    //     } else {
+    //         header.classList.remove("stickyHeader");
+    //     }
+    // }
+
+</script>
+
+</html>
